@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- custom for the tree view -->
+        <record id="estate_proprety_offer_tree" model="ir.ui.view">
+            <field name="name">estate.property.offer.tree</field>
+            <!-- this name if for list of views (not the actual UI) -->
+            <field name="model">estate.property.offer</field>
+            <field name="arch" type="xml">
+                <tree string="All your Offer">
+                    <field name="price" />
+                    <field name="status" />
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- custom for the form view -->
+        <record id="estate_property_offer_form" model="ir.ui.view">
+            <field name="name">estate.property.offer.form</field>
+            <!-- this name if for list of forms (not the actual UI) -->
+            <field name="model">estate.property.offer</field>
+            <field name="arch" type="xml">
+                <form string="Create your Offer">
+                    <sheet>
+                        <notebook>
+                            <page name="offer" string="Offers">
+                                <group>
+                                    <group>
+                                        <div class="oe_title">
+                                            <div class="oe_edit_only">
+                                                <label for="price" />
+                                            </div>
+                                            <h1 class="mb32">
+                                                <field name="price" class="mb16" />
+                                            </h1>
+                                        </div>
+                                        <div class="oe_title">
+                                            <div class="oe_edit_only">
+                                                <label for="partner_id" />
+                                            </div>
+                                            <h1 class="mb32">
+                                                <field name="partner_id" class="mb16" />
+                                            </h1>
+                                        </div>
+                                    </group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="accounting2" string="Accounting2">
+                                <group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="estate_property_search" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search string="Delivery Carrier">
+                    <field name="name" />
+                    <field name="selling_price" />
+                    <separator />
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]" />
+                    <filter string="High-end North" name="north-more-than-500"
+                        domain="['&amp;',('garden_orientation', '=', 'north'),('selling_price','>=', 500)]" />
+                    <group expand="1" string="Group By">
+                        <filter string="garden_orientation" name="garden_orientation"
+                            context="{'group_by':'garden_orientation', 'residual_visible':True}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

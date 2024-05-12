@@ -65,44 +65,15 @@
                                 <field name="salesman_id" class="mb16" />
                             </h1>
                         </div>
-                        <div class="oe_title">
-                            <div class="oe_edit_only">
-                                <label for="date_availability" />
-                            </div>
-                            <h1 class="mb32">
-                                <field name="date_availability" class="mb16" />
-                            </h1>
-                        </div>
-                        <div class="oe_title">
-                            <div class="oe_edit_only">
-                                <label for="expected_price" />
-                            </div>
-                            <h1 class="mb32">
-                                <field name="expected_price" class="mb16" />
-                            </h1>
-                        </div>
                         <notebook>
-                            <page name="accounting" string="Accounting">
-                                <group>
-                                    <group>
-                                        <div class="oe_edit_only">
-                                            <label for="name" />
-                                        </div>
-                                        <h1 class="mb32">
-                                            <field name="name" class="mb16" />
-                                        </h1>
-                                        <field name="active" invisible="1" />
-                                    </group>
-                                    <group>
-                                        <div class="oe_edit_only">
-                                            <label for="name" />
-                                        </div>
-                                        <h1 class="mb32">
-                                            <field name="name" class="mb16" />
-                                        </h1>
-                                        <field name="active" invisible="1" />
-                                    </group>
-                                </group>
+                            <page name="offer" string="Offers">
+                                <field name="property_offer_ids">
+                                    <tree string="All your Offer">
+                                        <field name="price" />
+                                        <field name="status" />
+                                        <field name="partner_id" />
+                                    </tree>
+                                </field>
                             </page>
                             <page name="accounting2" string="Accounting2">
                                 <group>
