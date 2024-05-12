@@ -45,6 +45,12 @@
                         </div>
                         <div class="oe_title">
                             <div class="oe_edit_only">
+                                <label for="property_tag_ids" />
+                            </div>
+                            <field name="property_tag_ids" class="mb16" widget="many2many_tags" />
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
                                 <label for="property_type_id" />
                             </div>
                             <h1 class="mb32">

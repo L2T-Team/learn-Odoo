@@ -7,6 +7,7 @@ class EstateProperty(models.Model):
     _description = "Real Estate Property for Testing"
 
     name = fields.Char(required=True)
+    property_tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date(
