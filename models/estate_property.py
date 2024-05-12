@@ -14,8 +14,8 @@ class EstateProperty(models.Model):
     )
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(readonly=True, copy=False)
-    buyer_id = fields.Many2one("res.partner", string="Buyer")
-    salesman_id = fields.Many2one("res.users", string="Salesman")
+    salesman_id = fields.Many2one('res.users', string='Salesperson', index=True, tracking=True, default=lambda self: self.env.user)
+    property_type_id = fields.Many2one("estate.property.type", string="Property Type")
     state = fields.Selection([
         ("new", "New"),
         ("offer_received", "Offer Received"),

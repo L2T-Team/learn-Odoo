@@ -4,7 +4,7 @@
         <record id="estate_property_action" model="ir.actions.act_window">
             <!-- <field name="name">Properties</field> -->
             <field name="res_model">estate.property</field>
-            <field name="view_mode">tree,form</field> 
+            <field name="view_mode">tree,form</field>
             <!-- this line is mandatory to specify which view do we want-->
         </record>
 
@@ -15,36 +15,133 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <tree string="All your Properties">
-                    <field name="name"/>
-                    <field name="postcode"/>
-                    <field name="bedrooms"/>
-                    <field name="living_area"/>
-                    <field name="expected_price"/>
-                    <field name="selling_price"/>                       
-                    <field name="date_availability"/>
+                    <field name="name" />
+                    <field name="postcode" />
+                    <field name="bedrooms" />
+                    <field name="living_area" />
+                    <field name="expected_price" />
+                    <field name="selling_price" />
+                    <field name="property_type_id" />
+                    <field name="date_availability" />
                 </tree>
             </field>
         </record>
-        
+
         <!-- custom for the form view -->
-        <record id="estate_property_form" model="ir.ui.view" >
+        <record id="estate_property_form" model="ir.ui.view">
             <field name="name">estate.property.form</field>
             <!-- this name if for list of forms (not the actual UI) -->
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <form string="Lost Reason">
+                <form string="Create your Property">
                     <sheet>
                         <div class="oe_title">
                             <div class="oe_edit_only">
-                                <label for="name"/>
+                                <label for="name" />
                             </div>
                             <h1 class="mb32">
-                                <field name="name" class="mb16"/>
+                                <field name="name" class="mb16" />
                             </h1>
-                            <field name="active" invisible="1"/>
                         </div>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="property_type_id" />
+                            </div>
+                            <h1 class="mb32">
+                                <field name="property_type_id" class="mb16" />
+                            </h1>
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="salesman_id" />
+                            </div>
+                            <h1 class="mb32">
+                                <field name="salesman_id" class="mb16" />
+                            </h1>
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="date_availability" />
+                            </div>
+                            <h1 class="mb32">
+                                <field name="date_availability" class="mb16" />
+                            </h1>
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="expected_price" />
+                            </div>
+                            <h1 class="mb32">
+                                <field name="expected_price" class="mb16" />
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page name="accounting" string="Accounting">
+                                <group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="accounting2" string="Accounting2">
+                                <group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                    <group>
+                                        <div class="oe_edit_only">
+                                            <label for="name" />
+                                        </div>
+                                        <h1 class="mb32">
+                                            <field name="name" class="mb16" />
+                                        </h1>
+                                        <field name="active" invisible="1" />
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record id="estate_property_search" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search string="Delivery Carrier">
+                    <field name="name" />
+                    <field name="selling_price" />
+                    <separator />
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]" />
+                    <filter string="High-end North" name="north-more-than-500"
+                        domain="['&amp;',('garden_orientation', '=', 'north'),('selling_price','>=', 500)]" />
+                    <group expand="1" string="Group By">
+                        <filter string="garden_orientation" name="garden_orientation"
+                            context="{'group_by':'garden_orientation', 'residual_visible':True}" />
+                    </group>
+                </search>
             </field>
         </record>
     </data>
