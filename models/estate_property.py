@@ -3,6 +3,7 @@ import datetime
 from reportlab.graphics.shapes import inverse
 
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class EstateProperty(models.Model):
@@ -83,3 +84,28 @@ class EstateProperty(models.Model):
 	def _inverse_date_dateline(self):
 		for record in self:
 			record.validity = (record.date_deadline - fields.Date.today()).days
+
+	@api.onchange("garden")
+	def _onchange_garden(self):
+		if self.garden:
+			self.garden_orientation = 'north'
+			self.garden_area = 10
+		else:
+			self.garden_orientation = False
+			self.garden_area = 0
+
+	def estate_sold(self):
+		for record in self:  # why for here?
+			if record.state == "canceled":
+				raise UserError("A canceled property can not be sold!")
+			else:
+				record.state = "sold"
+		return "sold"
+
+	def estate_cancel(self):
+		for record in self:  # why for here?
+			if record.state == "sold":
+				raise UserError("A sold property can not be canceled!")
+			else:
+				record.state = "canceled"
+		return "canceled"

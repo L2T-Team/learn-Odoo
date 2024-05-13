@@ -33,6 +33,11 @@
 			<!-- this name if for list of forms (not the actual UI) -->
 			<field name="model">estate.property</field>
 			<field name="arch" type="xml">
+				<header>
+					<button name="estate_sold" type="object" string="Sold" class="btn-primary" />
+<!--					type = object means telling Odoo to execute method estate_sold-->
+					<button name="estate_cancel" type="object" string="Cancel"/>
+				</header>
 				<form string="Create your Property">
 					<sheet>
 						<div class="oe_title">
@@ -50,6 +55,11 @@
 								<field name="salesman_id"/>
 								<field name="state"/>
 								<field name="expected_price"/>
+								<group>
+									<field name="garden"/>
+									<field name="garden_orientation"/>
+									<field name="garden_area"/>
+								</group>
 							</group>
 							<group>
 								<field name="garden_area"></field>
