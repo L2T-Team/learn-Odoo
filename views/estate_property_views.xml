@@ -49,7 +49,8 @@
 								<field name="name" class="mb16"/>
 							</h1>
 						</div>
-						<field name="property_tag_ids" class="mb16" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+						<field name="property_tag_ids" class="mb16" widget="many2many_tags"
+									 options="{'color_field': 'color', 'no_create_edit': True}"/>
 						<group>
 							<group>
 								<field name="property_type_id"/>
@@ -76,9 +77,11 @@
 
 						<notebook>
 							<page name="offer" string="Offers">
-								<field name="property_offer_ids" attrs="{'readonly': ['|', ('state', '=', 'offer_accepted'), ('state', '=', 'sold')]}">
-									<tree string="All your Offer" >
-										<field name="price"/>
+								<field name="property_offer_ids"
+											 attrs="{'readonly': ['|', ('state', '=', 'offer_accepted'), ('state', '=', 'sold')]}"
+								>
+									<tree string="All your Offer" editable="bottom">
+										<field name="price" />
 										<field name="status"/>
 										<field name="partner_id"/>
 										<button name="estate_offer_accept" string="Accept" type="object" icon="fa-check"/>
