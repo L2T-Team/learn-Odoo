@@ -9,6 +9,9 @@ from odoo.exceptions import UserError
 class EstateProperty(models.Model):
 	_name = "estate.property"
 	_description = "Real Estate Property for Testing"
+	_sql_constraints = [
+		('expected_price', 'CHECK(expected_price >= 0)', 'Expected_price must be strictly positive'),
+	]
 
 	name = fields.Char(required=True)
 	property_tag_ids = fields.Many2many("estate.property.tag", string="Tags")
