@@ -59,8 +59,8 @@
 								<field name="selling_price"/>
 								<group>
 									<field name="garden"/>
-									<field name="garden_orientation"/>
-									<field name="garden_area"/>
+									<field name="garden_orientation" attrs="{'invisible': [('garden', '=', False)]}"/>
+									<field name="garden_area" attrs="{'invisible': [('garden', '=', False)]}"/>
 								</group>
 							</group>
 							<group>
@@ -76,8 +76,8 @@
 
 						<notebook>
 							<page name="offer" string="Offers">
-								<field name="property_offer_ids">
-									<tree string="All your Offer">
+								<field name="property_offer_ids" attrs="{'readonly': ['|', ('state', '=', 'offer_accepted'), ('state', '=', 'sold')]}">
+									<tree string="All your Offer" >
 										<field name="price"/>
 										<field name="status"/>
 										<field name="partner_id"/>
