@@ -120,3 +120,16 @@ class EstateProperty(models.Model):
 		for record in self:
 			if float_compare(record.selling_price, record.expected_price * 0.8, 2) == -1:
 				raise UserError("Selling price should not less than 80% expected price")
+
+	received_offers = fields.Integer(compute="_get_offer_count")
+
+	def _get_offer_count(self):
+		for record in self:
+			record.received_offers = len(record.property_offer_ids)
+
+	@api.ondelete(at_uninstall=False)
+	def _unlink_property(self):
+		# for record in self:
+		# if record.state != "canceled":
+		if self.state != "canceled":
+			raise UserError("You cannot delete a property that is not canceled.")

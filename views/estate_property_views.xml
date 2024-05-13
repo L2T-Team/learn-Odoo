@@ -14,7 +14,8 @@
 			<!-- this name if for list of views (not the actual UI) -->
 			<field name="model">estate.property</field>
 			<field name="arch" type="xml">
-				<tree string="All your Properties">
+				<tree string="All your Properties"
+							decoration-success="received_offers"	>
 					<field name="name"/>
 					<field name="postcode"/>
 					<field name="bedrooms"/>
@@ -23,6 +24,7 @@
 					<field name="selling_price"/>
 					<field name="property_type_id"/>
 					<field name="date_availability"/>
+					<field name="received_offers" invisible="1"/>
 				</tree>
 			</field>
 		</record>
@@ -80,7 +82,7 @@
 								<field name="property_offer_ids"
 											 attrs="{'readonly': ['|', ('state', '=', 'offer_accepted'), ('state', '=', 'sold')]}"
 								>
-									<tree string="All your Offer" editable="bottom">
+									<tree string="All your Offer" editable="bottom" decoration-success="status=='accepted'" >
 										<field name="price" />
 										<field name="status"/>
 										<field name="partner_id"/>
