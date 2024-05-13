@@ -1,119 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="estate_property_action" model="ir.actions.act_window">
-            <!-- <field name="name">Properties</field> -->
-            <field name="res_model">estate.property</field>
-            <field name="view_mode">tree,form</field>
-            <!-- this line is mandatory to specify which view do we want-->
-        </record>
+	<data>
+		<record id="estate_property_action" model="ir.actions.act_window">
+			<!-- <field name="name">Properties</field> -->
+			<field name="res_model">estate.property</field>
+			<field name="view_mode">tree,form</field>
+			<!-- this line is mandatory to specify which view do we want-->
+		</record>
 
-        <!-- custom for the tree view -->
-        <record id="estate_proprety_tree" model="ir.ui.view">
-            <field name="name">estate.property.tree</field>
-            <!-- this name if for list of views (not the actual UI) -->
-            <field name="model">estate.property</field>
-            <field name="arch" type="xml">
-                <tree string="All your Properties">
-                    <field name="name" />
-                    <field name="postcode" />
-                    <field name="bedrooms" />
-                    <field name="living_area" />
-                    <field name="expected_price" />
-                    <field name="selling_price" />
-                    <field name="property_type_id" />
-                    <field name="date_availability" />
-                </tree>
-            </field>
-        </record>
+		<!-- custom for the tree view -->
+		<record id="estate_proprety_tree" model="ir.ui.view">
+			<field name="name">estate.property.tree</field>
+			<!-- this name if for list of views (not the actual UI) -->
+			<field name="model">estate.property</field>
+			<field name="arch" type="xml">
+				<tree string="All your Properties">
+					<field name="name"/>
+					<field name="postcode"/>
+					<field name="bedrooms"/>
+					<field name="living_area"/>
+					<field name="expected_price"/>
+					<field name="selling_price"/>
+					<field name="property_type_id"/>
+					<field name="date_availability"/>
+				</tree>
+			</field>
+		</record>
 
-        <!-- custom for the form view -->
-        <record id="estate_property_form" model="ir.ui.view">
-            <field name="name">estate.property.form</field>
-            <!-- this name if for list of forms (not the actual UI) -->
-            <field name="model">estate.property</field>
-            <field name="arch" type="xml">
-                <form string="Create your Property">
-                    <sheet>
-                        <div class="oe_title">
-                            <div class="oe_edit_only">
-                                <label for="name" />
-                            </div>
-                            <h1 class="mb32">
-                                <field name="name" class="mb16" />
-                            </h1>
-                        </div>
-                        <field name="property_tag_ids" class="mb16" widget="many2many_tags" />
-                        <group>
-                            <group>
-                                <field name="property_type_id" />
-                                <field name="salesman_id" />
-                                <field name="state" />
-                                <field name="expected_price" />
-                            </group>
-                            <group>
-                                <field name="garden_area"></field>
-                                <field name="living_area"></field>
-                                <field name="total_area"></field>
-                                <field name="best_price" string="Best Offer"></field>
-                            </group>
-                        </group>
+		<!-- custom for the form view -->
+		<record id="estate_property_form" model="ir.ui.view">
+			<field name="name">estate.property.form</field>
+			<!-- this name if for list of forms (not the actual UI) -->
+			<field name="model">estate.property</field>
+			<field name="arch" type="xml">
+				<form string="Create your Property">
+					<sheet>
+						<div class="oe_title">
+							<div class="oe_edit_only">
+								<label for="name"/>
+							</div>
+							<h1 class="mb32">
+								<field name="name" class="mb16"/>
+							</h1>
+						</div>
+						<field name="property_tag_ids" class="mb16" widget="many2many_tags"/>
+						<group>
+							<group>
+								<field name="property_type_id"/>
+								<field name="salesman_id"/>
+								<field name="state"/>
+								<field name="expected_price"/>
+							</group>
+							<group>
+								<field name="garden_area"></field>
+								<field name="living_area"></field>
+								<field name="total_area"></field>
+								<field name="best_price" string="Best Offer"></field>
+								<field name="validity"></field>
+								<field name="date_deadline"></field>
+							</group>
+						</group>
 
-                        <notebook>
-                            <page name="offer" string="Offers">
-                                <field name="property_offer_ids">
-                                    <tree string="All your Offer">
-                                        <field name="price" />
-                                        <field name="status" />
-                                        <field name="partner_id" />
-                                    </tree>
-                                </field>
-                            </page>
-                            <page name="accounting2" string="Accounting2">
-                                <group>
-                                    <group>
-                                        <div class="oe_edit_only">
-                                            <label for="name" />
-                                        </div>
-                                        <h1 class="mb32">
-                                            <field name="name" class="mb16" />
-                                        </h1>
-                                        <field name="active" invisible="1" />
-                                    </group>
-                                    <group>
-                                        <div class="oe_edit_only">
-                                            <label for="name" />
-                                        </div>
-                                        <h1 class="mb32">
-                                            <field name="name" class="mb16" />
-                                        </h1>
-                                        <field name="active" invisible="1" />
-                                    </group>
-                                </group>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+						<notebook>
+							<page name="offer" string="Offers">
+								<field name="property_offer_ids">
+									<tree string="All your Offer">
+										<field name="price"/>
+										<field name="status"/>
+										<field name="partner_id"/>
+									</tree>
+								</field>
+							</page>
+							<page name="accounting2" string="Accounting2">
+								<group>
+									<group>
+										<div class="oe_edit_only">
+											<label for="name"/>
+										</div>
+										<h1 class="mb32">
+											<field name="name" class="mb16"/>
+										</h1>
+										<field name="active" invisible="1"/>
+									</group>
+									<group>
+										<div class="oe_edit_only">
+											<label for="name"/>
+										</div>
+										<h1 class="mb32">
+											<field name="name" class="mb16"/>
+										</h1>
+										<field name="active" invisible="1"/>
+									</group>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
 
-        <record id="estate_property_search" model="ir.ui.view">
-            <field name="name">estate.property.search</field>
-            <field name="model">estate.property</field>
-            <field name="arch" type="xml">
-                <search string="Delivery Carrier">
-                    <field name="name" />
-                    <field name="selling_price" />
-                    <separator />
-                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]" />
-                    <filter string="High-end North" name="north-more-than-500"
-                        domain="['&amp;',('garden_orientation', '=', 'north'),('selling_price','>=', 500)]" />
-                    <group expand="1" string="Group By">
-                        <filter string="garden_orientation" name="garden_orientation"
-                            context="{'group_by':'garden_orientation', 'residual_visible':True}" />
-                    </group>
-                </search>
-            </field>
-        </record>
-    </data>
+		<record id="estate_property_search" model="ir.ui.view">
+			<field name="name">estate.property.search</field>
+			<field name="model">estate.property</field>
+			<field name="arch" type="xml">
+				<search string="Delivery Carrier">
+					<field name="name"/>
+					<field name="selling_price"/>
+					<separator/>
+					<filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+					<filter string="High-end North" name="north-more-than-500"
+									domain="['&amp;',('garden_orientation', '=', 'north'),('selling_price','>=', 500)]"/>
+					<group expand="1" string="Group By">
+						<filter string="garden_orientation" name="garden_orientation"
+										context="{'group_by':'garden_orientation', 'residual_visible':True}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+	</data>
 </odoo>
