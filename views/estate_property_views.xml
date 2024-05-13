@@ -34,8 +34,8 @@
 			<field name="model">estate.property</field>
 			<field name="arch" type="xml">
 				<header>
-					<button name="estate_sold" type="object" string="Sold" class="btn-primary" />
-<!--					type = object means telling Odoo to execute method estate_sold-->
+					<button name="estate_sold" type="object" string="Sold" class="btn-primary"/>
+					<!--					type = object means telling Odoo to execute method estate_sold-->
 					<button name="estate_cancel" type="object" string="Cancel"/>
 				</header>
 				<form string="Create your Property">
@@ -62,12 +62,13 @@
 								</group>
 							</group>
 							<group>
-								<field name="garden_area"></field>
-								<field name="living_area"></field>
-								<field name="total_area"></field>
-								<field name="best_price" string="Best Offer"></field>
-								<field name="validity"></field>
-								<field name="date_deadline"></field>
+								<field name="garden_area"/>
+								<field name="living_area"/>
+								<field name="total_area"/>
+								<field name="best_price" string="Best Offer"/>
+								<field name="validity"/>
+								<field name="date_deadline"/>
+								<field name="buyer_id"/>
 							</group>
 						</group>
 
@@ -78,6 +79,8 @@
 										<field name="price"/>
 										<field name="status"/>
 										<field name="partner_id"/>
+										<button name="estate_offer_accept" string="Accept" type="object" icon="fa-check"/>
+										<button name="estate_offer_refuse" string="Refuse" type="object" icon="fa-times"/>
 									</tree>
 								</field>
 							</page>

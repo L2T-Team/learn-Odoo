@@ -19,6 +19,7 @@ class EstateProperty(models.Model):
 	)
 	expected_price = fields.Float(required=True)
 	selling_price = fields.Float(readonly=True, copy=False)
+	buyer_id = fields.Many2one("res.partner", string="Buyer", copy=False)
 	salesman_id = fields.Many2one(
 		"res.users",
 		string="Salesperson",
