@@ -133,3 +133,4 @@ class EstateProperty(models.Model):
 		# if record.state != "canceled":
 		if self.state != "canceled":
 			raise UserError("You cannot delete a property that is not canceled.")
+
