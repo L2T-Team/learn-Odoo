@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="estate_properties_user_form" model="ir.ui.view">
+			<field name="name">res.user.form.inherit</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='preferences']" position="after">
+					<page string="Related Properties">
+						<field name="property_ids"/>
+						<field name="hehe"/>
+
+						<group string="Multi Companies" attrs="{'invisible': [('companies_count', '&lt;=', 1)]}">
+							<field string="Allowed Companies" name="company_ids" widget="many2many_tags"
+										 options="{'no_create': True}"/>
+							<field string="Default Company" name="company_id" context="{'user_preference': 0}"/>
+							<field string="Companies count" name="companies_count" invisible="1"/>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
