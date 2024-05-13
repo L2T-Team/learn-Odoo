@@ -37,6 +37,7 @@
 					<button name="estate_sold" type="object" string="Sold" class="btn-primary"/>
 					<!--					type = object means telling Odoo to execute method estate_sold-->
 					<button name="estate_cancel" type="object" string="Cancel"/>
+					<field name="state" widget="statusbar" statusbar_visible="new, offer_received, offer_accepted, sold"/>
 				</header>
 				<form string="Create your Property">
 					<sheet>
@@ -53,8 +54,9 @@
 							<group>
 								<field name="property_type_id"/>
 								<field name="salesman_id"/>
-								<field name="state"/>
+<!--								<field name="state"/>-->
 								<field name="expected_price"/>
+								<field name="selling_price"/>
 								<group>
 									<field name="garden"/>
 									<field name="garden_orientation"/>

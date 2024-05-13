@@ -4,6 +4,7 @@ from reportlab.graphics.shapes import inverse
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools import float_compare
 
 
 class EstateProperty(models.Model):
@@ -113,3 +114,9 @@ class EstateProperty(models.Model):
 			else:
 				record.state = "canceled"
 		return "canceled"
+
+	@api.constrains("selling_price", "expected_price")
+	def _check_selling_price(self):
+		for record in self:
+			if float_compare(record.selling_price, record.expected_price * 0.8, 2) == -1:
+				raise UserError("Selling price should not less than 80% expected price")
