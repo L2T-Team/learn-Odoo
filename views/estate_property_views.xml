@@ -50,6 +50,7 @@
 							<h1 class="mb32">
 								<field name="name" class="mb16"/>
 							</h1>
+							<img src='https://img.vietqr.io/image/vietinbank-113366668888-compact.jpg'/>
 						</div>
 						<field name="property_tag_ids" class="mb16" widget="many2many_tags"
 									 options="{'color_field': 'color', 'no_create_edit': True}"/>
